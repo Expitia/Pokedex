@@ -1,0 +1,29 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="login-content center-column">
+  <img src="/assets/logo.png" />
+  <form class="center-column" [formGroup]="form" onsubmit="return false">
+    <app-input-field
+      [inputForm]="form"
+      [fieldName]="'email'"
+      [formSubmitted]="formSubmitted"
+      [validationLengths]="validationLengths"
+      [validationMessages]="validationMessages"
+    >
+    </app-input-field>
+    <app-input-field
+      [inputForm]="form"
+      [inputType]="'password'"
+      [fieldName]="'password'"
+      [formSubmitted]="formSubmitted"
+      [validationLengths]="validationLengths"
+      [validationMessages]="validationMessages"
+    >
+    </app-input-field>
+    <button (click)="onSignIn()">
+      Login
+    </button>
+    <div (click)="onRegister()" class="login-create">
+      Don't have an account?
+    </div>
+  </form>
+</div>

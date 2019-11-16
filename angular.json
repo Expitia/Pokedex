@@ -1,0 +1,116 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "pokedex": {
+      "root": "",
+      "prefix": "app",
+      "schematics": {},
+      "sourceRoot": ".",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "main": "main.ts",
+            "assets": ["assets"],
+            "index": "index.html",
+            "polyfills": "polyfills.ts",
+            "tsConfig": "tsconfig.json",
+            "outputPath": "dist/pokedex",
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
+            "styles": [
+              "styles/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "aot": true,
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "optimization": true,
+              "vendorChunk": false,
+              "outputHashing": "all",
+              "buildOptimizer": true,
+              "extractLicenses": true
+            },
+            "qa": {
+              "aot": true,
+              "extractCss": true,
+              "sourceMap": false,
+              "namedChunks": false,
+              "optimization": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "outputHashing": "all",
+              "extractLicenses": true
+            },
+            "local": {}
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "pokedex:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "pokedex:build:production"
+            },
+            "qa": {
+              "browserTarget": "pokedex:build:qa"
+            },
+            "local": {
+              "browserTarget": "pokedex:build:local"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "pokedex:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["tsconfig.json", "tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "pokedex-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "pokedex:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pokedex:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "pokedex"
+}

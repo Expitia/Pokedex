@@ -1,0 +1,274 @@
+body {
+  background-repeat: repeat-x;
+  background-image: url(/assets/background.png);
+  background-color: rgb(98, 162, 112) !important;
+}
+
+.app-header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  padding: 0.5rem;
+  position: fixed;
+  align-items: center;
+  background-color: rgb(239, 83, 80);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.app-header .header-option,
+.app-header .header-option a {
+  margin-left: 0.5rem;
+  color: white !important;
+}
+
+.app-content {
+  padding: 1rem;
+  padding-top: 50px;
+}
+
+.app-content .login-content,
+.app-content .register-content {
+  height: 100%;
+}
+
+.app-content .login-content img,
+.app-content .register-content img {
+  width: 250px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.app-content .login-content form,
+.app-content .register-content form {
+  z-index: 1;
+  width: 250px;
+  padding: 1rem;
+  color: white;
+  font-size: 14px;
+  background: mediumpurple;
+  background-repeat: no-repeat !important;
+  background-image: url(/assets/pokeball-partial.png) !important;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.app-content .login-content button,
+.app-content .register-content button {
+  border: 0;
+  outline: 0;
+  width: 95%;
+  padding: 0.8rem;
+  color: #ffffff;
+  background: blueviolet;
+}
+
+.app-content .register-content button {
+  padding: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.app-content .register-content .register-note {
+  font-size: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.app-content .register-content .register-note span {
+  opacity: 0.9;
+  color: green;
+}
+
+.app-content .login-content .login-create {
+  color: white;
+  cursor: pointer;
+  padding-top: 0.5rem;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.app-content .pokedex-content .name-field,
+.app-content .pokedex-content select {
+  margin-top: 1rem;
+}
+
+.app-content .pokedex-content .pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-content .pokedex-content .pokemon-list .result {
+  width: 125px;
+  margin: 1rem;
+  padding: 15px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  background: dimgray;
+  background-repeat: no-repeat !important;
+  background-image: url(/assets/pokeball-partial.png) !important;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.app-content .pokedex-content .pokemon-list .result .types-content {
+  display: flex;
+  padding: 0.5rem;
+  justify-content: space-around;
+}
+
+.app-content .pokedex-content .nav-options {
+  display: flex;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  align-items: center;
+  color: rgb(239, 83, 80);
+  justify-content: center;
+}
+
+.app-content .pokedex-content .nav-options input {
+  margin: 0px 1rem;
+  max-width: 100px;
+}
+
+.app-content .pokedex-content .nav-options div {
+  width: 2rem;
+  cursor: pointer;
+}
+
+.app-content .details-content {
+  color: white;
+  margin: 2rem;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.app-content .details-content .title {
+  width: 100%;
+  padding: 0.2rem;
+  font-size: 1.2rem;
+  background: black;
+}
+
+.app-content .details-content .types-content img {
+  margin: auto 0.2rem;
+}
+
+.app-content .details-content .general-data .body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.app-content .details-content .moves-data .move-row {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1px solid black;
+}
+
+.app-content .details-content .moves-data .move-row span {
+  width: 100%;
+}
+
+.app-content .details-content .moves-data .move-row hr {
+  width: 100%;
+  border-color: white;
+}
+
+.app-content .details-content .moves-data .move-header {
+  display: none;
+}
+
+.app-content .details-content .body strong,
+.app-content .details-content .evol-data .evol strong,
+.app-content .details-content .moves-data .move-row strong,
+.app-content .details-content .moves-data .move-header strong {
+  font-weight: 500;
+  color: rgb(239, 83, 80);
+}
+
+.app-content .details-content > div {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.app-content .details-content .general-data,
+.app-content .details-content .evol-data {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app-content .details-content .evol-data .evols {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-content .details-content .evol-data .evols .evol {
+  display: flex;
+  margin: auto 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.center-column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .app-content .pokedex-content .name-field {
+    top: 5px;
+    margin: 0px;
+    width: 250px;
+    right: 0.5rem;
+    position: fixed;
+  }
+  .app-content .pokedex-content select {
+    top: 5px;
+    margin: 0px;
+    width: 175px;
+    right: 260px;
+    position: fixed;
+  }
+  .app-content .details-content .moves-data .move-row,
+  .app-content .details-content .moves-data .move-header {
+    border: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .app-content .details-content .moves-data .move-row strong,
+  .app-content .details-content .moves-data .move-row hr {
+    display: none;
+  }
+
+  .app-content .details-content .moves-data .move-row span,
+  .app-content .details-content .moves-data .move-header strong {
+    width: 50px;
+    text-align: right;
+  }
+
+  .app-content .details-content .moves-data .move-row .move-name,
+  .app-content .details-content .moves-data .move-header .move-name {
+    width: 150px;
+    text-align: left;
+  }
+}

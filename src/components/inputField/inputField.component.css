@@ -1,0 +1,11 @@
+.help {
+  display: flex;
+  align-items: center;
+}
+.help a {
+  font-size: 1.5em;
+  margin: 0 10px;
+}
+.help span {
+  font-size: 9pt;
+}

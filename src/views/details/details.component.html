@@ -1,0 +1,77 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="details-content">
+  <div class="general-data">
+    <div class="title">
+      {{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }}
+    </div>
+    <img src="{{ pokemon.image }}" />
+    <div class="types-content">
+      <img
+        *ngIf="!!pokemon.types[0]"
+        src="https://play.pokemonshowdown.com/sprites/types/{{
+          pokemon.types[0]
+        }}.png"
+        alt="{{ pokemon.types[0] }}"
+        height="14"
+        width="32"
+      />
+      <img
+        *ngIf="!!pokemon.types[1]"
+        src="https://play.pokemonshowdown.com/sprites/types/{{
+          pokemon.types[1]
+        }}.png"
+        alt="{{ pokemon.types[1] }}"
+        height="14"
+        width="32"
+      />
+    </div>
+    <div class="body">
+      <strong>Height: </strong>
+      <span>{{ pokemon.height / 10 }} m</span>
+      <strong>Weight: </strong>
+      <span>{{ pokemon.weight / 10 }} kg</span>
+    </div>
+  </div>
+  <div *ngIf="evols && evols.length > 1" class="evol-data">
+    <div class="title">Evolutions</div>
+    <div class="evols">
+      <div class="evol" *ngFor="let evol of evols">
+        <img src="{{ evol.image }}" />
+        <strong>Name: </strong>
+        <span>{{ evol.name }}</span>
+        <strong *ngIf="!!evol.item">Item: </strong>
+        <span>{{ evol.item }}</span>
+        <strong *ngIf="!!evol.level && evol.level > 1">Level: </strong>
+        <span *ngIf="!!evol.level && evol.level > 1">{{ evol.level }}</span>
+        <strong *ngIf="!!evol.trigger">Trigger: </strong>
+        <span>{{ evol.trigger }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="moves-data">
+    <div class="title">Moves</div>
+    <div class="move-header">
+      <strong class="move-name">Name </strong>
+      <strong>PP </strong>
+      <strong>Power </strong>
+      <strong>Priority </strong>
+      <strong>Accuracy </strong>
+      <strong>Type </strong>
+    </div>
+    <div class="move-row" *ngFor="let move of moves">
+      <strong>Name: </strong>
+      <span class="move-name">{{ move.name }}</span>
+      <strong>PP: </strong>
+      <span>{{ move.pp }}</span>
+      <strong>Power: </strong>
+      <span>{{ move.power }}</span>
+      <strong>Priority: </strong>
+      <span>{{ move.priority }}</span>
+      <strong>Accuracy: </strong>
+      <span>{{ move.accuracy }}</span>
+      <strong>Type: </strong>
+      <span>{{ move.type.name }}</span>
+      <hr />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div [formGroup]="inputForm">
+  <div
+    class="form-group"
+    [ngClass]="{
+      'has-feedback': formSubmitted && inputForm.controls[fieldName].errors,
+      'has-error': formSubmitted && inputForm.controls[fieldName].errors
+    }"
+  >
+    <label *ngIf="validationMessages[fieldName].label"
+      ><span
+        >{{ validationMessages[fieldName].label
+        }}<span *ngIf="validationMessages[fieldName].required">*</span></span
+      ></label
+    >
+    <div class="help">
+      <input
+        autocomplete="off"
+        class="form-control"
+        [readonly]="readOnly"
+        type="{{ inputType }}"
+        (keyup)="onKeyUp($event)"
+        formControlName="{{ fieldName }}"
+        [attr.disabled]="disabled ? '' : null"
+        maxlength="{{ validationLengths[fieldName].maxlength }}"
+        placeholder="{{ validationMessages[fieldName].placeholder }}"
+        value="{{
+          !inputForm.controls[fieldName]
+            ? ''
+            : inputForm.controls[fieldName].value
+        }}"
+        [ngClass]="{
+          'border border-danger':
+            formSubmitted && inputForm.controls[fieldName].errors
+        }"
+      />
+
+      <a
+        tabindex="0"
+        role="button"
+        data-content=""
+        *ngIf="showHelp"
+        data-trigger="focus"
+        data-toggle="popover"
+        ><i class="fa fa-info-circle" aria-hidden="true"></i
+      ></a>
+    </div>
+    <span
+      *ngIf="formSubmitted && inputForm.controls[fieldName].errors"
+      class="help-block text-danger"
+    >
+      <span [hidden]="!inputForm.controls[fieldName].errors.required"
+        >{{ validationMessages[fieldName].required }}<br
+      /></span>
+
+      <span [hidden]="!inputForm.controls[fieldName].errors.pattern"
+        >{{ validationMessages[fieldName].regex }}<br
+      /></span>
+
+      <span [hidden]="!inputForm.controls[fieldName].errors.minlength"
+        >{{ validationMessages[fieldName].minlength }}<br
+      /></span>
+      <span [hidden]="!inputForm.controls[fieldName].errors.maxlength">{{
+        validationMessages[fieldName].maxlength
+      }}</span>
+    </span>
+
+    <span
+      *ngIf="formSubmitted && inputForm.controls[fieldName].customError"
+      class="help-block text-danger"
+    >
+      {{ inputForm.controls[fieldName].customError }}
+    </span>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div *ngIf="!isLogin" class="app-header">
+  <span
+    class="header-option"
+    (click)="option.onClick()"
+    *ngFor="let option of options"
+  >
+    <i class="{{ option.icon }} {{ option.class }} nav-item-icon"></i>
+    <a href="javascript:void(0)">{{ option.description }}</a>
+  </span>
+</div>
+<div class="app-content">
+  <router-outlet
+    #routerOutlet="outlet"
+    (showMask)="addMask($event)"
+  ></router-outlet>
+</div>

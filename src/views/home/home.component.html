@@ -1,0 +1,69 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="pokedex-content">
+  <input
+    placeholder="Search by name"
+    class="form-control name-field"
+    (keyup)="onWriteSearch($event)"
+    (change)="onWriteSearch($event)"
+  />
+  <select class="form-control" (change)="onSelectType($event)">
+    <option value=""> Search by type </option>
+    <option *ngFor="let type of types" value="{{ type }}"> {{ type }}</option>
+  </select>
+  <div
+    class="nav-options"
+    *ngIf="!((writedText && writedText.length >= 3) || selectedType)"
+  >
+    <div>
+      <i
+        *ngIf="pokemons[0] && pokemons[0].id > 1"
+        class="far fa-arrow-alt-circle-left"
+        (click)="onNav('L')"
+      ></i>
+    </div>
+    <input
+      class="form-control"
+      (keyup)="onWritePage($event)"
+      placeholder="Page {{ index + 1 }}"
+    />
+    <div>
+      <i
+        (click)="onNav('R')"
+        *ngIf="pokemons.length === 50"
+        class="far fa-arrow-alt-circle-right"
+      ></i>
+    </div>
+  </div>
+  <div class="pokemon-list">
+    <div
+      *ngFor="let pkmon of pokemons"
+      (click)="onClickResult(pkmon)"
+      class="result"
+    >
+      <img class="" src="{{ pkmon.image }}" />
+      <div>
+        <span>{{ pkmon.name }}</span>
+        <div class="types-content">
+          <img
+            *ngIf="!!pkmon.types[0]"
+            src="https://play.pokemonshowdown.com/sprites/types/{{
+              pkmon.types[0]
+            }}.png"
+            alt="{{ pkmon.types[0] }}"
+            height="14"
+            width="32"
+          />
+          <img
+            *ngIf="!!pkmon.types[1]"
+            src="https://play.pokemonshowdown.com/sprites/types/{{
+              pkmon.types[1]
+            }}.png"
+            alt="{{ pkmon.types[1] }}"
+            height="14"
+            width="32"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

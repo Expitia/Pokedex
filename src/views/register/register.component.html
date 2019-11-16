@@ -1,0 +1,78 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="register-content center-column">
+  <img src="/assets/logo.png" />
+  <form class="center-column" [formGroup]="form" onsubmit="return false">
+    <app-input-field
+      [inputForm]="form"
+      [fieldName]="'fullName'"
+      [formSubmitted]="formSubmitted"
+      [validationLengths]="validationLengths"
+      [validationMessages]="validationMessages"
+    >
+    </app-input-field>
+    <app-input-field
+      [inputForm]="form"
+      [fieldName]="'email'"
+      [formSubmitted]="formSubmitted"
+      [validationLengths]="validationLengths"
+      [validationMessages]="validationMessages"
+    >
+    </app-input-field>
+    <app-input-field
+      [inputForm]="form"
+      [inputType]="'password'"
+      [fieldName]="'password'"
+      [formSubmitted]="formSubmitted"
+      [validationLengths]="validationLengths"
+      [validationMessages]="validationMessages"
+    >
+    </app-input-field>
+    <app-input-field
+      [inputForm]="form"
+      [inputType]="'password'"
+      [fieldName]="'confirmPassword'"
+      [formSubmitted]="formSubmitted"
+      [validationLengths]="validationLengths"
+      [validationMessages]="validationMessages"
+    >
+    </app-input-field>
+    <button (click)="onRegister()">
+      Register
+    </button>
+    <button (click)="onCancel()">
+      Cancel
+    </button>
+
+    <div class="register-note">
+      <div>Note:</div>
+      <div>
+        <span
+          *ngIf="lengthRegex.test(form.value.password)"
+          class="fas fa-check"
+        ></span>
+        The password must have at least 8 characters
+      </div>
+      <div>
+        <span
+          *ngIf="capitalRegex.test(form.value.password)"
+          class="fas fa-check"
+        ></span>
+        Must have at least two capital letters
+      </div>
+      <div>
+        <span
+          *ngIf="specialRegex.test(form.value.password)"
+          class="fas fa-check"
+        ></span>
+        Must have at least one special character
+      </div>
+      <div>
+        <span
+          *ngIf="numberRegex.test(form.value.password)"
+          class="fas fa-check"
+        ></span>
+        Must have at least one number
+      </div>
+    </div>
+  </form>
+</div>
